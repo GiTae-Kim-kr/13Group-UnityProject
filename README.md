@@ -31,5 +31,6 @@ Github Repos
 ------ feature/utils/data (점수 등)<br>
 ------ feature/utils/sound<br>
 ---- resource (이미지, 음악)<br>
----- docs (README.md)<br>
+---- docs (README.md)<br><br>
+
 <img width="537" height="652" alt="image" src="https://github.com/user-attachments/assets/66874611-0ed3-4b92-830d-062a5c852837" />
