@@ -21,15 +21,15 @@ Fireboy Watergirl - Forest Temple
 - 레벨에 따른 난이도
 
 Github Repos
--- master (root)
----- feature/object (branch)
------- feature/object/character
------- feature/object (보석)
------- feature/object/obstacle
----- feature/object/map
------- feature/utils/input
------- feature/utils/data (점수 등)
------- feature/utils/sound
----- resource (이미지, 음악)
----- docs (README.md)
+-- master (root)<br>
+---- feature/object (branch)<br>
+------ feature/object/character<br>
+------ feature/object (보석)<br>
+------ feature/object/obstacle<br>
+---- feature/object/map<br>
+------ feature/utils/input<br>
+------ feature/utils/data (점수 등)<br>
+------ feature/utils/sound<br>
+---- resource (이미지, 음악)<br>
+---- docs (README.md)<br>
 <img width="537" height="652" alt="image" src="https://github.com/user-attachments/assets/66874611-0ed3-4b92-830d-062a5c852837" />
