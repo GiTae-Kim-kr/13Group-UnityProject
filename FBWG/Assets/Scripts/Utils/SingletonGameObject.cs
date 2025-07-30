@@ -18,8 +18,6 @@ namespace Backend.Utils
         
         protected sealed override void Awake()
         {
-            LogManager.LogProgress();
-            
             if (_instance is null)
             {
                 _instance = this as T;
@@ -42,7 +40,7 @@ namespace Backend.Utils
                 {
                     message = $"Instance of type {typeof(T)} already destroyed on application quit. Returning null.";
 
-                    UnityEngine.Debug.LogWarning(message);
+                    Debug.LogWarning(message);
                     
                     return null;
                 }
@@ -68,7 +66,7 @@ namespace Backend.Utils
 
                         message = $"There should never be more than one singleton instance of type {typeof(T)} in the scene, but {length} were found. The first instance found will be used, and all others will be destroyed.";
 
-                        UnityEngine.Debug.LogWarning(message);
+                        Debug.LogWarning(message);
 
                         for (var i = 1; i < length; i++)
                         {
@@ -88,7 +86,7 @@ namespace Backend.Utils
                     
                     message = "An instance is needed in the scene and no existing instances were found, so a new instance will be created.";
 
-                    UnityEngine.Debug.Log(message);
+                    Debug.Log(message);
 
                     return _instance;
                 }
