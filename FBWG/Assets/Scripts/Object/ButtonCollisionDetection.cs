@@ -6,7 +6,7 @@ using Backend.Utils.Extension;
 
 namespace Backend.Object
 {
-    public class ButtonCollisionDetection : CollisionEnteredDetection
+    public class ButtonCollisionDetection : CollisionEnteredDetection //버튼에 붙일 코드, 버튼 상호작용
     {
         private ButtonGroup _group; //private로 변수 선언할때는 _가 국룰
 
@@ -17,7 +17,9 @@ namespace Backend.Object
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            var component = other.GetComponent<ObjectIdentifier>();
+                
+            if (type.HasFlag(component.type))
             {
                 _group.Release();
             }

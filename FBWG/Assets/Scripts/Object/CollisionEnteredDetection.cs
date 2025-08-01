@@ -8,12 +8,14 @@ namespace Backend.Object
 {
     public class CollisionEnteredDetection : MonoBehaviour //들어오는 충돌 감지
     {
-        [SerializeField] protected PlayerCharacterType type;
+        [SerializeField] protected ObjectIdentity type;
         public UnityEvent onEntered;
         
         protected void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            var component = other.GetComponent<ObjectIdentifier>();
+                
+            if (type.HasFlag(component.type)) //HasFlag로 component.type이 type에 포함되어 있는지를 체크함
             {
                 onEntered.Invoke(); //입력만 담당
             }

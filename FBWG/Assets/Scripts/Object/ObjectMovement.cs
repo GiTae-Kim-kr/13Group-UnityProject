@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Backend.Object
 {
-    public class ObjectMovement : MonoBehaviour //발판 움직임 제어
+    public class ObjectMovement : MonoBehaviour //발판에 붙이는 코드, 움직임 제어
     {
         private Vector3[] _positions;
         private float _time;
@@ -16,11 +16,11 @@ namespace Backend.Object
             _positions[1] = transform.GetChild(1).position; //발판 종료위치
         }
 
-        private IEnumerator Moving()
+        private IEnumerator Moving() //발판 움직임
         {
             var time = Time.deltaTime;
             var position = transform.position;
-            while (_time <= 1f)
+            while (_time <= 1f) //0부터 1 방향
             {
                 transform.position = Vector3.Lerp(position, _positions[1], _time);
                 _time += time;
@@ -28,11 +28,11 @@ namespace Backend.Object
             }
         }
 
-        private IEnumerator Returning()
+        private IEnumerator Returning() //발판 되돌아감
         {
             var time = Time.deltaTime;
             var position = transform.position;
-            while (_time >= 0f)
+            while (_time >= 0f) //1부터 0 방향
             {
                 transform.position = Vector3.Lerp(_positions[0], position, _time);
                 _time -= time;

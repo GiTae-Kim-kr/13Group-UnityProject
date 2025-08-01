@@ -6,12 +6,10 @@ using UnityEngine.Events;
 
 public class ButtonGroup : MonoBehaviour
 {
-    [SerializeField] private float time = 3f;
-
     public UnityEvent onMove;
     public UnityEvent onReturned;
 
-    public void Press()
+    public void Press() //버튼 눌렀을 때
     {
         Count++;
         if (Count > 0)
@@ -20,7 +18,7 @@ public class ButtonGroup : MonoBehaviour
         }
     }
 
-    public void Release()
+    public void Release() //버튼에서 나왔을 때
     {
         Count--;
         if (Count <= 0)
