@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Backend.Utils
 {
     public class ApplicationManager : Singleton<ApplicationManager>
