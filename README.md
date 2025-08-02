@@ -168,7 +168,9 @@ Github Repos<br>
   <li>최종 발표 준비 및 시연</li>
 </ul>
 
+
 # 와이어프레임
 
 
 <img width="537" height="652" alt="image" src="https://github.com/user-attachments/assets/66874611-0ed3-4b92-830d-062a5c852837" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=footer" />
