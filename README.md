@@ -181,6 +181,7 @@
   <li>최종 발표 준비 및 시연</li>
 </ul>
 
+---
 
 # 와이어프레임
 
@@ -229,6 +230,8 @@
 단순하게 구현했던 초기 구조는 작은 테스트에는 문제 없었지만, **확장성 측면에서 매우 취약**했다.  
 이번 경험을 통해 **처음부터 확장 가능성과 관리 구조를 고려한 설계**가 중요하다는 것을 배움.  
 또한, 피드백을 적극 반영하고 구조를 리팩토링함으로써, 단순한 기능 구현을 넘어서 **효율적인 구조 설계 경험**을 쌓을 수 있었음.
+
+---
 
 <img width="537" height="652" alt="image" src="https://github.com/user-attachments/assets/66874611-0ed3-4b92-830d-062a5c852837" />
 <img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=footer" />
