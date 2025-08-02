@@ -6,11 +6,11 @@
 ## 목차
 1. [프로젝트 소개](#프로젝트-소개)
 2. [팀원 소개](#팀원-소개)
-3. [Git구성](#Git-구성)
+3. [구성](#구성)
 4. [주요기능](#주요기능)
 5. [개발기간](#개발기간)
 6. [와이어프레임](#와이어프레임)
-7. [Trouble Shooting](#trouble-shooting)
+7. [트러블 슈팅](#트러블-슈팅)
 
 <br>
 
@@ -72,25 +72,38 @@
 
 <br>
 
-# Git 구성
+# 구성
 
-Github Repos<br>
--- master (root)<br>
----- feature<br>
------- feature/character<br>
------- feature/object (보석)<br>
------- feature/obstacle<br>
------- feature/map<br>
------- feature/input<br>
------- feature/data<br>
------- feature/sound<br>
------- feature/ui<br>
----- origin<br>
------- origin/develop<br>
------- origin/feature/management<br>
------- origin/hotfix/map<br>
----- resource (이미지, 음악)<br>
----- docs (README.md)<br>
+<h2>📁 GitHub Repository 구조</h2>
+<ul>
+  <li><strong>master (root)</strong>
+    <ul>
+      <li><strong>feature</strong>
+        <ul>
+          <li>feature/character</li>
+          <li>feature/object <em>(보석)</em></li>
+          <li>feature/obstacle</li>
+          <li>feature/map</li>
+          <li>feature/input</li>
+          <li>feature/data</li>
+          <li>feature/sound</li>
+          <li>feature/ui</li>
+        </ul>
+      </li>
+      <li><strong>origin</strong>
+        <ul>
+          <li>origin/develop</li>
+          <li>origin/feature/management</li>
+          <li>origin/hotfix/map</li>
+        </ul>
+      </li>
+      <li><strong>resource</strong> <em>(이미지, 음악)</em></li>
+      <li><strong>docs</strong> <em>(README.md)</em></li>
+    </ul>
+  </li>
+</ul>
+
+
 
 <br>
 
@@ -171,6 +184,51 @@ Github Repos<br>
 
 # 와이어프레임
 
+
+# 트러블 슈팅
+
+<h3> 2개의 버튼으로 하나의 플랫폼 조작 </h3>
+
+### 🔍 문제 상황
+처음에는 버튼이 **1개뿐이었기 때문에**, 해당 버튼 하나만으로 플랫폼을 조작하도록 단순하게 구현했다.  
+이 과정에서 **버튼 구조를 별도로 설계하지 않고**, 버튼과 플랫폼을 직접 연결하는 방식으로 구현함.
+
+하지만 이후 **버튼을 하나 더 추가하고 테스트**하는 과정에서 문제가 발생함.  
+새로 추가된 버튼은 **플랫폼과 직접 연결되지 않았기 때문에**, 버튼을 눌러도 아무런 반응이 없었고 플랫폼 조작이 불가능했다.
+
+---
+
+### 💡 튜터님 피드백
+튜터님으로부터 구조 자체를 바꿔보자는 피드백을 받음.  
+핵심 아이디어는 다음과 같았다:
+
+> **"버튼이 플랫폼을 직접 가리키는 것이 아니라, 버튼들과 플랫폼을 통합적으로 관리하는 '버튼 그룹'을 만들고, 버튼은 충돌만 감지한 뒤 해당 그룹에게 신호를 전달하는 구조로 변경하자."**
+
+---
+
+### 🔧 해결 방법
+튜터의 피드백을 반영하여 다음과 같은 구조로 리팩토링 진행:
+
+- **ButtonGroup**: 플랫폼과 버튼들을 통합 관리  
+- **Button**: 충돌(누름)만 감지하고, 조작 로직은 그룹에 위임  
+- **Platform**: 그룹의 명령에 따라 동작
+
+이 구조를 통해 버튼이 몇 개가 되든, 어떤 버튼이 눌리든 **그룹을 통해 일관된 방식으로 플랫폼을 제어**할 수 있게 됨.
+
+---
+
+### ✅ 결과 및 이점
+- 문제였던 **버튼-플랫폼 연결 실패 이슈 해결**
+- 버튼을 **유연하게 확장 가능**한 구조로 개선
+- **책임 분리**와 **코드 재사용성 향상**
+- 그룹 기반 구조로 **전체적인 관리가 쉬워짐**
+
+---
+
+### 📝 회고
+단순하게 구현했던 초기 구조는 작은 테스트에는 문제 없었지만, **확장성 측면에서 매우 취약**했다.  
+이번 경험을 통해 **처음부터 확장 가능성과 관리 구조를 고려한 설계**가 중요하다는 것을 배움.  
+또한, 피드백을 적극 반영하고 구조를 리팩토링함으로써, 단순한 기능 구현을 넘어서 **효율적인 구조 설계 경험**을 쌓을 수 있었음.
 
 <img width="537" height="652" alt="image" src="https://github.com/user-attachments/assets/66874611-0ed3-4b92-830d-062a5c852837" />
 <img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=footer" />
