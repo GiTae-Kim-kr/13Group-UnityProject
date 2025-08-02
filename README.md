@@ -1,11 +1,16 @@
+<img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=header" />
+
+
 # 13Group-UnityProject FBWG
 
 ## 목차
 1. [프로젝트 소개](#프로젝트-소개)
-2. [팀원소개](#팀원-소개)
-3. [Git구성](##Git-구성)
+2. [팀원 소개](#팀원-소개)
+3. [Git구성](#Git-구성)
 4. [주요기능](#주요기능)
 5. [개발기간](#개발기간)
+6. [와이어프레임](#와이어프레임)
+7. [Trouble Shooting](#trouble-shooting)
 
 <br>
 
@@ -34,7 +39,7 @@
 
 <br>
 
-## 팀원 소개
+# 팀원 소개
 
 ### 오경민님
 - 캐릭터 기본 이동(각 캐릭터 독립적인 이동 방식)
@@ -86,6 +91,84 @@ Github Repos<br>
 ------ origin/hotfix/map<br>
 ---- resource (이미지, 음악)<br>
 ---- docs (README.md)<br>
+
+<br>
+
+---
+
+<br>
+
+# 주요기능
+보석 : 유니티의 GameObject.SetActive 함수와 [flags] 속성을 이용하여, 인스펙터창에서 플레이어 타입을 선택하게끔 함.(+ 충돌을 감지하여 부딪힌 대상의 타입을 체크하고, 원하는 함수를 실행해주는 함수) player1은 보석1만 먹을 수 있고, player2는 보석2만 먹을 수 있는데, 먹었을 때 SetActive(false) 상태가 되어 보석이 화면에서 사라짐
+<br>
+<br>
+블록 : 간단히 Square 스프라이트에 Box Collider2D와 RigidBody2D를 추가하고, 오브젝트 식별 함수를 넣어 block 타입이 되도록 함 (타입을 설정하여 이후 블록으로도 버튼을 누를 수 있도록 해주는 역할)
+<br>
+<br>
+버튼 : 2개 이상의 버튼이 하나의 플랫폼을 조종해야 해서 ButtonGroup를 만들어서 관리함. ButtonGroup이 플랫폼과 버튼들을 관리하고, 각각의 버튼은 플레이어/블록과의 충돌 여부를 판단한 뒤 ButtonGroup으로 보내서 플랫폼을 조작함
+<br>
+<br>
+레버 : 플레이어와 충돌했고, Input.GetKeyDown으로 Space키가 눌렸을 시 레버의 이미지가 바뀌면서 플랫폼을 조작함
+<br>
+<br>
+플랫폼 : 선형 함수 Vector3.Lerp를 사용하여 _time에 deltaTime을 더해주면서 움직이게 함. 코루틴을 이용하여 조건 만족시에만 움직이도록 함
+
+<br>
+
+---
+
+<br>
+
+# 개발기간
+
+<h2>📆 프로젝트 개발 일정</h2>
+
+<h3>🗓️ 사전 기획 <small>(07/29 화)</small></h3>
+<ul>
+  <li>프로젝트 주제 선정 및 범위 설정</li>
+  <li>레퍼런스 게임 분석 및 핵심 메커니즘 파악</li>
+  <li>개발 일정 및 역할 분담</li>
+</ul>
+
+<hr>
+
+<h3>🛠️ 기본 시스템 구현 <small>(07/29 화 ~ 07/30 수)</small></h3>
+<ul>
+  <li>캐릭터 움직임 및 기본 물리 시스템 개발</li>
+  <li>맵, 레벨 디자인 초안 작성</li>
+  <li>UI 프레임워크 구축</li>
+  <li>스프라이트 에셋 제작</li>
+</ul>
+
+<hr>
+
+<h3>🚀 핵심 기능 개발 <small>(07/30 수 ~ 07/31 목)</small></h3>
+<ul>
+  <li>캐릭터별 고유 능력 구현</li>
+  <li>상호작용 가능한 오브젝트 시스템 개발</li>
+  <li>레벨 디자인 구체화 및 퍼즐 요소 추가</li>
+</ul>
+
+<hr>
+
+<h3>🧪 개발 완료 및 최적화 <small>(08/01 금)</small></h3>
+<ul>
+  <li>각각의 코드 통합</li>
+  <li>최종 테스트</li>
+  <li>오류 및 수정 사항 피드백</li>
+  <li>피드백 기반 게임 밸런싱 조정</li>
+  <li>게임 완성도 향상 및 마무리</li>
+  <li>발표 / 결과보고서 PPT 제작</li>
+</ul>
+
+<hr>
+
+<h3>🏁 최종 완성 <small>(08/04 월)</small></h3>
+<ul>
+  <li>최종 발표 준비 및 시연</li>
+</ul>
+
+# 와이어프레임
 
 
 <img width="537" height="652" alt="image" src="https://github.com/user-attachments/assets/66874611-0ed3-4b92-830d-062a5c852837" />
