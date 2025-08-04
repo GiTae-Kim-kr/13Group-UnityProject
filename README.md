@@ -29,9 +29,9 @@
 결국 플레이어블 캐릭터, 맵, 오브젝트 등 디자인 관련된  부분만 직접 제작 하고 플레이 방식은 레퍼런스 게임을 차용 <br>
 3개의 스테이지(맵) 으로 구성 하고 직접 테스트 해보며 난이도에 맞게 1,2,3 으로 구성 <br>
 
-플레이 목표 : 최대한 빠른 시간안에 함정들을 피해 보석을 모두 획득 하고 탈출
+<img width="537" height="652" alt="image" src="https://github.com/user-attachments/assets/66874611-0ed3-4b92-830d-062a5c852837" />
 
-구상 : https://www.figma.com/design/a9oW9nVaJ4vdqM4ypm0CRh/%ED%8C%8C%EC%9D%B4%EC%96%B4%EC%9B%8C%ED%84%B0%EA%B1%B8-%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8%ED%85%9C%ED%94%8C-?node-id=0-1&p=f&t=9nve6xKY5pV1dkGf-0
+플레이 목표 : 최대한 빠른 시간안에 함정들을 피해 보석을 모두 획득 하고 탈출
 
 <br>
 
@@ -185,6 +185,9 @@
 
 # 와이어프레임
 
+https://www.figma.com/design/a9oW9nVaJ4vdqM4ypm0CRh/%ED%8C%8C%EC%9D%B4%EC%96%B4%EC%9B%8C%ED%84%B0%EA%B1%B8-%ED%8F%AC%EB%A0%88%EC%8A%A4%ED%8A%B8%ED%85%9C%ED%94%8C-?node-id=0-1&p=f&t=9nve6xKY5pV1dkGf-0
+
+---
 
 # 트러블 슈팅
 
@@ -233,5 +236,5 @@
 
 ---
 
-<img width="537" height="652" alt="image" src="https://github.com/user-attachments/assets/66874611-0ed3-4b92-830d-062a5c852837" />
+
 <img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=footer" />
