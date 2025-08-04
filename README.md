@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=header" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=CF1020&height=150&section=header" />
 
 
 # 13Group-UnityProject FBWG
@@ -237,4 +237,4 @@ https://www.figma.com/design/a9oW9nVaJ4vdqM4ypm0CRh/%ED%8C%8C%EC%9D%B4%EC%96%B4%
 ---
 
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=footer" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0C68AB&height=150&section=footer" />
