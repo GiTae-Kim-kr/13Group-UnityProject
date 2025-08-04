@@ -21,12 +21,12 @@ namespace Backend.Object
             _index = -1;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="isLoop"></param>
-        public void Play(int index, bool isLoop = false)
+        public void Play(int index)
+        {
+            Play(index, false);
+        }
+        
+        public void Play(int index, bool isLoop)
         {
             if (_index == index)
             {

@@ -76,19 +76,19 @@ namespace Backend.Object
                 return;
             }
             
-            var x = Mathf.Round(_rigidbody2D.velocity.x * 10f) / 10f;
-            _animation.Flip(x < 0f);
-            
             isJumping = hit.distance > 0.05f;
+            
             if (isJumping)
             {
                 _rigidbody2D.gravityScale = -Physics2D.gravity.y;
                 
-                _animation.Play(2);
+                _animation.Play(2, false);
             }
             else
             {
                 _rigidbody2D.gravityScale = 0f;
+                
+                var x = Mathf.Round(_rigidbody2D.velocity.x * 10f) / 10f;
                 
                 _animation.Play(x != 0f ? 1 : 0, true);
             }
@@ -122,6 +122,8 @@ namespace Backend.Object
             var direction = context.ReadValue<Vector2>();
             var x = direction.x;
             var y = _rigidbody2D.velocity.y;
+            
+            _animation.Flip(x < 0f);
             
             _rigidbody2D.velocity = new Vector2(x * speed, y);
         }

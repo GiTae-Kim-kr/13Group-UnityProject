@@ -1,19 +1,24 @@
 ﻿using Backend.Utils;
+using UnityEngine;
 
 namespace Backend.Object.UI
 {
-    public class StageStartButton : BaseButton
+    public class ReturnButton : BaseButton
     {
+        private GameObject _panel;
+        
         protected override void Awake()
         {
             base.Awake();
-            
-            ApplicationManager.Pause();
-        }
 
+            _panel = transform.parent.gameObject;
+        }
+        
         protected override void Click()
         {
             ApplicationManager.Play();
+            
+            _panel.SetActive(false);
         }
     }
 }

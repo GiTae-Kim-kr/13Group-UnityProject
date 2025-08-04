@@ -21,11 +21,13 @@ namespace Backend.Utils
 
         private void Load_Internal()
         {
-            if (File.Exists(GetPersistentDataPath(nameof(StageData))) == false)
+            if (File.Exists(GetPersistentDataPath(nameof(UserData))) == false)
             {
                 var data = new UserData
                            {
-                               Stages = new [] { new StageData(), new StageData(), new StageData() }
+                               Stages = new [] { new StageData { Unlocked = true }, new StageData(), new StageData() },
+                               BackgroundAudioSourceVolume = 0.5f,
+                               EffectAudioSourceVolume = 0.5f
                            };
                 
                 JsonSerializer.Serialize(GetPersistentDataPath(nameof(UserData)), data);

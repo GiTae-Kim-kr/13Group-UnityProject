@@ -7,7 +7,7 @@ namespace Backend.Data.Json
     public class StageData
     {
         [SerializeField] private int score;
-        [SerializeField] private bool unlocked = true;
+        [SerializeField] private bool unlocked;
         
         public int Score { get => score; set => score = value; }
         

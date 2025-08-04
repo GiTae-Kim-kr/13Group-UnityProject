@@ -79,8 +79,11 @@ namespace Backend.Object
             }
 
             var index = SceneManager.GetActiveScene().buildIndex - 2;
+            if (SceneManager.sceneCount > index + 1)
+            {
+                DataManager.UserData.Stages[index + 1].Unlocked = true;
+            }
             DataManager.UserData.Stages[index].Score = _successCount;
-            DataManager.UserData.Stages[index + 1].Unlocked = true;
             DataManager.Save();
                 
             scoreText.text = score.ToString();

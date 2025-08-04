@@ -27,7 +27,7 @@ namespace Backend.Utils.Data
         /// <typeparam name="T"> Serializable Json data type. </typeparam>
         public static void Serialize<T>(string path, T data)
         {
-            var text = JsonUtility.ToJson(data);
+            var text = JsonUtility.ToJson(data, true);
 
             File.WriteAllText(path, text);
         }

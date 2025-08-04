@@ -17,6 +17,8 @@ namespace Backend.Utils
             {
                 return;
             }
+            
+            Debug.Log("Pause");
 
             Time.timeScale = 0f;
 
@@ -30,6 +32,8 @@ namespace Backend.Utils
                 return;
             }
 
+            Debug.Log("Play");
+            
             Time.timeScale = 1f;
 
             _isPaused = false;

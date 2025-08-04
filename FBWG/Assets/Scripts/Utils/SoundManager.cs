@@ -1,6 +1,10 @@
+using System;
 using Backend.Data;
+using Backend.Utils.Input;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Backend.Utils
 {
@@ -24,12 +28,44 @@ namespace Backend.Utils
         private AudioSource _background;
         private AudioSource _effect;
 
+        private UIControls _controls;
+        private GameObject _settingsObject;
+        
         protected override void OnAwake()
         {
             base.OnAwake();
 
             _background = transform.GetChild(0).GetComponent<AudioSource>();
             _effect = transform.GetChild(1).GetComponent<AudioSource>();
+
+            _controls = new UIControls();
+            
+            _settingsObject = transform.GetChild(2).gameObject;
+        }
+
+        private void OnEnable()
+        {
+            _controls.Enable();
+            _controls.Settings.Toggle.performed += Toggle;
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            
+            var volume = DataManager.UserData.BackgroundAudioSourceVolume;
+            SetBackgroundAudioSourceVolume_Internal(volume);
+            
+            volume = DataManager.UserData.EffectAudioSourceVolume;
+            SetEffectAudioSourceVolume_Internal(volume);
+            
+            _settingsObject.SetActive(false);
+        }
+
+        private void OnDisable()
+        {
+            _controls.Settings.Toggle.performed -= Toggle;
+            _controls.Disable();
         }
 
         private void PlayBackgroundAudioSource_Internal(int index)
@@ -55,12 +91,35 @@ namespace Backend.Utils
 
         private void SetBackgroundAudioSourceVolume_Internal(float value)
         {
-            master.SetFloat(background.name, value);
+            master.SetFloat(background.name, Mathf.Log10(value) * 20);
         }
 
         private void SetEffectAudioSourceVolume_Internal(float value)
         {
-            master.SetFloat(effect.name, value);
+            master.SetFloat(effect.name, Mathf.Log10(value) * 20);
+        }
+
+        private void Toggle(InputAction.CallbackContext context)
+        {
+            var child = _settingsObject.transform.GetChild(3);
+            
+            var isActive = _settingsObject.activeInHierarchy;
+            if (isActive)
+            {
+                ApplicationManager.Play();
+                
+                child.gameObject.SetActive(true);
+                
+                _settingsObject.SetActive(false);
+            }
+            else
+            {
+                ApplicationManager.Pause();
+
+                child.gameObject.SetActive(SceneManager.GetActiveScene().buildIndex >= 2);
+                
+                _settingsObject.SetActive(true);
+            }
         }
 
         #region STATIC METHOD API
@@ -94,7 +153,7 @@ namespace Backend.Utils
         /// Set the volume value for background sound.
         /// </summary>
         /// <param name="value"> Value of the volume. </param>
-        public static void SetBackgroundAudioVolume(float value)
+        public static void SetBackgroundAudioSourceVolume(float value)
         {
             Instance.SetBackgroundAudioSourceVolume_Internal(value);
         }
@@ -103,7 +162,7 @@ namespace Backend.Utils
         /// Set the volume value for effect sound.
         /// </summary>
         /// <param name="value"> Value of the volume. </param>
-        public static void SetEffectAudioVolume(float value)
+        public static void SetEffectAudioSourceVolume(float value)
         {
             Instance.SetEffectAudioSourceVolume_Internal(value);
         }

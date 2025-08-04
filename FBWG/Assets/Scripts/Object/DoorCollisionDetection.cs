@@ -25,7 +25,7 @@ namespace Backend.Object
                 return;
             }
             
-            _player.Play(0);
+            _player.Play(0, false);
             
             _controls.Enable();
             _controls.Door.Enter.performed += Enter;
@@ -39,7 +39,7 @@ namespace Backend.Object
                 return;
             }
             
-            _player.Play(1);
+            _player.Play(1, false);
             
             _controls.Door.Enter.performed -= Enter;
             _controls.Disable();
