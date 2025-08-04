@@ -1,28 +1,62 @@
-using System.Collections;
-using System.Collections.Generic;
-using Backend.Object;
+using Backend.Utils;
 using UnityEngine;
-using Backend.Utils.Extension;
 
 namespace Backend.Object
 {
-    public class ButtonCollisionDetection : CollisionEnteredDetection //버튼에 붙일 코드, 버튼 상호작용
+    public class ButtonCollisionDetection : CollisionStayedDetection
     {
-        private ButtonGroup _group; //private로 변수 선언할때는 _가 국룰
+        [Header("Sprite Settings")]
+        [SerializeField] private Sprite[] sprites;
+        
+        private SpriteRenderer _renderer;
+        
+        private ButtonGroup _group;
 
         private void Awake()
         {
+            _renderer = GetComponentInChildren<SpriteRenderer>();
+            _renderer.sprite = sprites[0];
+            
             _group = GetComponentInParent<ButtonGroup>();
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            var component = other.GetComponent<ObjectIdentifier>();
+            if (type.HasFlag(component.type) == false)
+            {
+                return;
+            }
+            
+            SoundManager.PlayEffectAudioSource(0);
+        }
+
+        protected override void OnTriggerStay2D(Collider2D other)
+        {
+            var component = other.GetComponent<ObjectIdentifier>();
+            if (type.HasFlag(component.type) == false)
+            {
+                return;
+            }
+            
+            _renderer.sprite = sprites[1];
+            
+            _group.Press();
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
             var component = other.GetComponent<ObjectIdentifier>();
-                
-            if (type.HasFlag(component.type))
+            if (type.HasFlag(component.type) == false)
             {
-                _group.Release();
+                return;
             }
+            
+            SoundManager.PlayEffectAudioSource(0);
+            
+            _renderer.sprite = sprites[0];
+                
+            _group.Release();
         }
     }
 }

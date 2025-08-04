@@ -1,107 +1,140 @@
+using System;
+using System.Numerics;
+using Backend.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Backend.Utils.Input;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Backend.Object
 {
     public class PlayerCharacterController : MonoBehaviour
     {
-        [Header("Movement Settings")]
-        [SerializeField] private int height;
-        [SerializeField] private int speed;
+        #region CONSTANT FIELD API
 
+        private const string GroundLayerName = "Ground";
+
+        #endregion
+        
+        [Header("Movement Settings")]
+        [SerializeField] private float height;
+        [SerializeField] private float speed;
+
+        [Header("Debug Information")]
+        [SerializeField] private bool isJumping;
+        [SerializeField] private Vector2 normal;
+        
+        private AnimationPlayer _animation;
+        private ObjectIdentifier _identifier;
+        
         private Rigidbody2D _rigidbody2D;
 
         private CharacterControls _controls;
 
-        private bool _isJumping;
-
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+
+            _animation = GetComponent<AnimationPlayer>();
+            _identifier = GetComponent<ObjectIdentifier>();
 
             _controls = new CharacterControls();
         }
 
         private void OnEnable()
         {
-            switch (gameObject.tag)
+            switch (_identifier.type)
             {
-                case Tag.Player01:
+                case ObjectIdentity.Player01:
                     _controls.Player01.Enable();
                     _controls.Player01.Move.performed += Move;
                     _controls.Player01.Jump.performed += Jump;
                     _controls.Player01.Move.canceled += Stop;
                     break;
-                case Tag.Player02:
+                case ObjectIdentity.Player02:
                     _controls.Player02.Enable();
                     _controls.Player02.Move.performed += Move;
                     _controls.Player02.Jump.performed += Jump;
                     _controls.Player02.Move.canceled += Stop;
                     break;
+                case ObjectIdentity.None:
+                case ObjectIdentity.Block:
                 default:
-                    break;
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
-        private void Start()
+        private void FixedUpdate()
         {
-            _rigidbody2D.gravityScale = -Physics2D.gravity.y;
+            var position = _rigidbody2D.position;
+            var origin = new Vector2(position.x, position.y);
+            var direction = Vector2.down;
+            
+            var hit = Physics2D.Raycast(origin, direction, float.MaxValue, LayerMask.GetMask(GroundLayerName));
+            if (hit.collider is null)
+            {
+                return;
+            }
+            
+            var x = Mathf.Round(_rigidbody2D.velocity.x * 10f) / 10f;
+            _animation.Flip(x < 0f);
+            
+            isJumping = hit.distance > 0.05f;
+            if (isJumping)
+            {
+                _rigidbody2D.gravityScale = -Physics2D.gravity.y;
+                
+                _animation.Play(2);
+            }
+            else
+            {
+                _rigidbody2D.gravityScale = 0f;
+                
+                _animation.Play(x != 0f ? 1 : 0, true);
+            }
         }
 
         private void OnDisable()
         {
-            switch (gameObject.tag)
+            switch (_identifier.type)
             {
-                case Tag.Player01:
+                case ObjectIdentity.Player01:
                     _controls.Player01.Move.performed -= Move;
                     _controls.Player01.Jump.performed -= Jump;
                     _controls.Player01.Move.canceled -= Stop;
                     _controls.Player01.Disable();
                     break;
-                case Tag.Player02:
+                case ObjectIdentity.Player02:
                     _controls.Player02.Move.performed -= Move;
                     _controls.Player02.Jump.performed -= Jump;
                     _controls.Player02.Move.canceled -= Stop;
                     _controls.Player02.Disable();
                     break;
+                case ObjectIdentity.None:
+                case ObjectIdentity.Block:
                 default:
-                    break;
-            }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision2D)
-        {
-            var other = collision2D.gameObject;
-            if (other.CompareTag(Tag.Ground))
-            {
-                _isJumping = false;
-            }
-        }
-
-        private void OnCollisionExit2D(Collision2D collision2D)
-        {
-            var other = collision2D.gameObject;
-            if (other.CompareTag(Tag.Ground))
-            {
-                _isJumping = true;
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
         private void Move(InputAction.CallbackContext context)
         {
             var direction = context.ReadValue<Vector2>();
-
-            _rigidbody2D.AddForce(direction * speed, ForceMode2D.Impulse);
+            var x = direction.x;
+            var y = _rigidbody2D.velocity.y;
+            
+            _rigidbody2D.velocity = new Vector2(x * speed, y);
         }
 
         private void Jump(InputAction.CallbackContext context)
         {
-            if (_isJumping)
+            if (isJumping)
             {
                 return;
             }
-
+            
+            SoundManager.PlayEffectAudioSource(1);
+            
             var gravity = Physics2D.gravity.y;
             var force = Mathf.Sqrt(2f * gravity * gravity * height);
 
@@ -110,9 +143,9 @@ namespace Backend.Object
 
         private void Stop(InputAction.CallbackContext context)
         {
-            var velocity = _rigidbody2D.velocity;
-
-            _rigidbody2D.velocity = new Vector2(0f, velocity.y);
+            var y = _rigidbody2D.velocity.y;
+            
+            _rigidbody2D.velocity = new Vector2(0f, y);
         }
     }
 }

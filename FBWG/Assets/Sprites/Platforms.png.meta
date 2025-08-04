@@ -154,7 +154,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
+        width: 512
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -173,9 +173,9 @@ TextureImporter:
       name: Platforms_1
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 0
-        width: 256
+        width: 512
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -194,9 +194,9 @@ TextureImporter:
       name: Platforms_2
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1024
         y: 0
-        width: 256
+        width: 512
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -215,9 +215,9 @@ TextureImporter:
       name: Platforms_3
       rect:
         serializedVersion: 2
-        x: 768
+        x: 1536
         y: 0
-        width: 256
+        width: 512
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -236,9 +236,9 @@ TextureImporter:
       name: Platforms_4
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 2048
         y: 0
-        width: 256
+        width: 512
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -249,111 +249,6 @@ TextureImporter:
       bones: []
       spriteID: da7cccd3e67413241adfc92243ad55de
       internalID: 1418159398
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Platforms_5
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4c3e14cc68e43548bf1fb8e108d2f62
-      internalID: -561984157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Platforms_6
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e2f826cf4d017d40a9ab7e8916a0a72
-      internalID: -1678199861
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Platforms_7
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 73986800692dc8f47bed2e335482a419
-      internalID: -607646221
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Platforms_8
-      rect:
-        serializedVersion: 2
-        x: 2048
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cadab299e0b733b46837e19fb61dceb2
-      internalID: -1812714121
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Platforms_9
-      rect:
-        serializedVersion: 2
-        x: 2304
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 45b5d1c19c7ee6146b8a21ef576d5b95
-      internalID: 437331558
       vertices: []
       indices: 
       edges: []
@@ -374,11 +269,6 @@ TextureImporter:
       Platforms_2: 1502906995
       Platforms_3: 784764277
       Platforms_4: 1418159398
-      Platforms_5: -561984157
-      Platforms_6: -1678199861
-      Platforms_7: -607646221
-      Platforms_8: -1812714121
-      Platforms_9: 437331558
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

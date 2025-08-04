@@ -1,3 +1,4 @@
+using Backend.Data;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -14,6 +15,10 @@ namespace Backend.Utils
         [SerializeField] private AudioMixerGroup background;
         [SerializeField] private AudioMixerGroup effect;
 
+        [Header("Data Settings")]
+        [SerializeField] private AudioClipData backgroundAudioClipData;
+        [SerializeField] private AudioClipData effectAudioClipData;
+        
         #endregion
 
         private AudioSource _background;
@@ -27,9 +32,9 @@ namespace Backend.Utils
             _effect = transform.GetChild(1).GetComponent<AudioSource>();
         }
 
-        private void PlayBackgroundAudioSource_Internal(AudioClip clip)
+        private void PlayBackgroundAudioSource_Internal(int index)
         {
-            _background.clip = clip;
+            _background.clip = backgroundAudioClipData[index];
             _background.Play();
         }
 
@@ -43,14 +48,9 @@ namespace Backend.Utils
             _background.Stop();
         }
 
-        private void PlayEffectAudioSource_Internal(AudioClip clip)
+        private void PlayEffectAudioSource_Internal(int index)
         {
-            if (clip is null)
-            {
-                return;
-            }
-
-            _effect.PlayOneShot(clip);
+            _effect.PlayOneShot(effectAudioClipData[index]);
         }
 
         private void SetBackgroundAudioSourceVolume_Internal(float value)
@@ -68,16 +68,16 @@ namespace Backend.Utils
         /// <summary>
         /// Play background audio source.
         /// </summary>
-        /// <param name="clip"> Background audio clip. </param>
-        public static void PlayBackgroundAudioSource(AudioClip clip)
+        /// <param name="index"> Index of background audio clip. </param>
+        public static void PlayBackgroundAudioSource(int index)
         {
-            Instance.PlayBackgroundAudioSource_Internal(clip);
+            Instance.PlayBackgroundAudioSource_Internal(index);
         }
 
         /// <summary>
         /// Stop background audio source that is currently playing.
-        /// </summary
-        public static void StopBakcgroundAudioSource()
+        /// </summary>
+        public static void StopBackgroundAudioSource()
         {
             Instance.StopBackgroundAudioSource_Internal();
         }
@@ -85,9 +85,9 @@ namespace Backend.Utils
         /// <summary>
         /// Play effect audio source.
         /// </summary>
-        public static void PlayEffectAudioSource(AudioClip clip)
+        public static void PlayEffectAudioSource(int index)
         {
-            Instance.PlayEffectAudioSource_Internal(clip);
+            Instance.PlayEffectAudioSource_Internal(index);
         }
 
         /// <summary>

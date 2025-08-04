@@ -4,7 +4,7 @@ namespace Backend.Utils
 {
     public class Singleton<T> where T : class
     {
-        private static readonly object Locker = new object();
+        private static readonly object Locker = new ();
 
         private static T _instance;
 

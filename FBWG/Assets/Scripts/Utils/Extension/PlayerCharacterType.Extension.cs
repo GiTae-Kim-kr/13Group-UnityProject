@@ -3,7 +3,7 @@ using Backend.Object;
 
 namespace Backend.Utils.Extension
 {
-    public static class PlayerCharacterTypeExtension //확장 메서드
+    public static class PlayerCharacterTypeExtension
     {
         public static string ToTag(this ObjectIdentity type)
         {
@@ -13,6 +13,8 @@ namespace Backend.Utils.Extension
                     return Tag.Player01;
                 case ObjectIdentity.Player02 :
                     return Tag.Player02;
+                case ObjectIdentity.None:
+                case ObjectIdentity.Block:
                 default:
                     return string.Empty;
             }

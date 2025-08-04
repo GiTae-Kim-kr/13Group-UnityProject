@@ -1,31 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.Events;
 
 public class ButtonGroup : MonoBehaviour
 {
+    [Header("Event Callback")]
+    [Space(4f)]
     public UnityEvent onMove;
     public UnityEvent onReturned;
 
-    public void Press() //버튼 눌렀을 때
+    [Header("Debug Information")]
+    public int count;
+    
+    public void Press()
     {
-        Count++;
-        if (Count > 0)
-        {
-            onMove.Invoke();
-        }
+        onMove.Invoke();
     }
 
-    public void Release() //버튼에서 나왔을 때
+    public void Release()
     {
-        Count--;
-        if (Count <= 0)
-        {
-            onReturned.Invoke();
-        }
+        onReturned.Invoke();
     }
-
-    public int Count { get; set; }
 }
