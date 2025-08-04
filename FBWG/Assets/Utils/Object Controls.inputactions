@@ -1,0 +1,74 @@
+{
+    "name": "Object Controls",
+    "maps": [
+        {
+            "name": "Lever",
+            "id": "262cb169-caf7-4b53-9d96-60dadbfcc6eb",
+            "actions": [
+                {
+                    "name": "Toggle",
+                    "type": "Button",
+                    "id": "2d4d7861-a843-4675-a247-bac8ecead7c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "49f8f387-ba10-4d35-a812-23878be4c06d",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Door",
+            "id": "365712b1-3151-4d34-83bc-c7245cea605c",
+            "actions": [
+                {
+                    "name": "Enter",
+                    "type": "Button",
+                    "id": "3750b5f2-22fd-4e38-9dc4-d03f2febd83f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "01a11410-5f6f-472b-a3df-b4be0cf338dd",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Desktop",
+                    "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Desktop",
+            "bindingGroup": "Desktop",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

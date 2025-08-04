@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1ffb009f2d44bfac8b790ac007d729, type: 3}
+  m_Name: Effect Audio Clip Data
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 53293137164543b4894e9895bcda44c2, type: 3}
+  - {fileID: 8300000, guid: 60ca767bf1ec2fc4583abfb56e966c5f, type: 3}
+  - {fileID: 8300000, guid: 30e402496d62f614cb72f288b49c9410, type: 3}
