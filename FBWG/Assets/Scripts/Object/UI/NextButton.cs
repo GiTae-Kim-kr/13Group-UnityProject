@@ -10,7 +10,7 @@ namespace Backend.Object.UI
         
         protected override void Awake()
         {
-            if (SceneManager.sceneCount <= SceneManager.GetActiveScene().buildIndex + 1)
+            if (SceneManager.sceneCountInBuildSettings <= SceneManager.GetActiveScene().buildIndex + 1)
             {
                 gameObject.SetActive(false);
 

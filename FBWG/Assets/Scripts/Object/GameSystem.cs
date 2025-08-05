@@ -79,7 +79,7 @@ namespace Backend.Object
             }
 
             var index = SceneManager.GetActiveScene().buildIndex - 2;
-            if (SceneManager.sceneCount > index + 1)
+            if (SceneManager.sceneCountInBuildSettings - 2 > index + 1)
             {
                 DataManager.UserData.Stages[index + 1].Unlocked = true;
             }
