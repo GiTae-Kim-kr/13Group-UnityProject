@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stage 01 Data
   m_EditorClassIdentifier: 
   count: 8
-  time: 900
+  time: 270000
